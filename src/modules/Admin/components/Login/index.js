@@ -59,7 +59,6 @@ class Login extends Component {
 
         <Item label='AWS S3 bucket name'>
           {getFieldDecorator('bucket', {
-            initialValue: 'aws-website-callaars-pdske',
             rules: [{ required: true, message: 'Your AWS S3 bucket name' }]
           })(
             <Input />
@@ -68,7 +67,6 @@ class Login extends Component {
 
         <Item label='AWS access key id'>
           {getFieldDecorator('accessKeyId', {
-            initialValue: 'AKIAJ7ZAZKABH6VCZ57A',
             rules: [{ required: true, message: 'Your AWS access key id' }]
           })(
             <Input />
@@ -77,7 +75,6 @@ class Login extends Component {
 
         <Item label='AWS secret access key'>
           {getFieldDecorator('secretAccessKey', {
-            initialValue: 'ocS7U03fFaGeFXjbOhD3HisSKHJhTFFKAcnGNRJj',
             rules: [{ required: true, message: 'Your AWS secret access key' }]
           })(
             <Input type='password' />
