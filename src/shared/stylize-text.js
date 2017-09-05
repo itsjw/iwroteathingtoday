@@ -1,34 +1,25 @@
-// import React from 'react'
+/**
+ * External dependencies
+ */
+import React from 'react'
+import Markdown from 'markdown-it'
+import twemoji from 'twemoji'
 
-// const italic = /(_|\*).*?(\1)/g
-// const bold = /(__|\*\*)(.*?)(\1)/g
-// const scratch = /~~(.*)~~/g
-// const image = /!\[(.*)\]\((.*)( {1}"(.*)")?\)/g
-// const url = /\[(.*)\]\((.*)\)/g
+// Enable Markdown and a ridiculous amount of plugins
+const md = new Markdown({ linkify: true, breaks: true, typographer: true })
+  .use(require('markdown-it-abbr'))
+  .use(require('markdown-it-deflist'))
+  .use(require('markdown-it-emoji'))
+  .use(require('markdown-it-footnote'))
+  .use(require('markdown-it-ins'))
+  .use(require('markdown-it-mark'))
+  .use(require('markdown-it-sub'))
+  .use(require('markdown-it-sup'))
 
-// function replaceBold (text) {
-  // if (text.match(bold)) {
-    // return React.createElement(
-      // 'string',
-      // text.replace(/(__|\**)/g, '')
-    // )
-  // }
+md.renderer.rules.emoji = function (token, index) {
+  return twemoji.parse(token[index].content)
+}
 
-  // return text
-// }
-
-// function replaceItalic (text) {
-  // return (<em>{text.replace(/(__|\*\*)/g, '')}</em>)
-// }
-
-export default function stylize (text) {
-  // console.log('Italic', text.match(italic))
-  // console.log('Bold', text.split(bold))
-  // console.log('Bold', text.match(bold))
-
-  // console.log('Scratch', text.match(scratch))
-  // console.log('Image', text.match(image))
-  // console.log('Url', text.match(url))
-
-  return text
+export default function stylize (text, Element) {
+  return (<Element dangerouslySetInnerHTML={{ __html: md.render(text) }} />)
 }

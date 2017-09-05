@@ -21,4 +21,13 @@ export default styled.article`
     line-height: ${ms(1)};
     text-align: justify;
   }
+
+  img {
+    max-width: 100%;
+  }
+
+  .emoji {
+    height: 18px;
+    margin: 0 1px;
+  }
 `

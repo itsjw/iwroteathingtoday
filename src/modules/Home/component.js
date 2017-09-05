@@ -11,10 +11,13 @@ import Row from 'antd/lib/row'
  */
 import Post from './components/Post'
 import ms from '../../shared/styles/modular-scale'
+import config from '../../shared/config'
 
 const HomeDiv = styled.div`
   padding: ${ms(0)} ${ms(1)};
 `
+
+const subtitle = config.subtitle ? (<h2> {config.subtitle} </h2>) : null
 
 class Home extends React.Component {
   componentWillMount () {
@@ -28,7 +31,8 @@ class Home extends React.Component {
 
     return (
       <HomeDiv>
-        <h1> I'm Joseph Callaars, and these are my ramblings. </h1>
+        <h1> {config.title} </h1>
+        {subtitle}
 
         <Row ref='posts' justify='center'> {map(posts, post => (<Post key={post.slug} post={post} />))} </Row>
       </HomeDiv>

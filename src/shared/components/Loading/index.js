@@ -10,6 +10,7 @@ import styled from 'styled-components'
  * Internal dependencies
  */
 import ms from '../../../shared/styles/modular-scale'
+import config from '../../../shared/config'
 
 const LoadingDiv = styled.div`
   padding: ${ms(4)} 0;
@@ -23,7 +24,7 @@ const Loading = () => (
   <LoadingDiv>
     <Row type='flex' justify='center' align='middle'>
       <Spin size='large' />
-      <p> Give it a sec, k? </p>
+      <p> {config.loading} </p>
     </Row>
   </LoadingDiv>
 )
