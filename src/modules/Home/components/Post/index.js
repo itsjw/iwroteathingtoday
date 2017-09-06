@@ -4,19 +4,19 @@
 import React from 'react'
 import moment from 'moment'
 import Col from 'antd/lib/col'
-import ReactEmoji from 'react-emoji'
 
 /**
  * Internal dependencies
  */
 import PostDiv from '../../../../shared/styled/Post'
+import stylize from '../../../../shared/stylize-text'
 
 const Post = ({ post: { content, added } }) => (
   <Col md={{ span: 12, offset: 6 }}>
     <PostDiv>
       <hr />
 
-      <p> {ReactEmoji.emojify(content)} </p>
+      {stylize(content)}
 
       <hr />
       <span> Rambled on <time> {moment(added).format('lll')} </time> </span>

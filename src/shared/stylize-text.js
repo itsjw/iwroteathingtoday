@@ -21,5 +21,7 @@ md.renderer.rules.emoji = function (token, index) {
 }
 
 export default function stylize (text, Element) {
+  if (!Element) return React.createElement('span', { dangerouslySetInnerHTML: { __html: md.render(text) } })
+
   return (<Element dangerouslySetInnerHTML={{ __html: md.render(text) }} />)
 }
