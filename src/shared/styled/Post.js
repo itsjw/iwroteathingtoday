@@ -10,6 +10,7 @@ import ms from '../styles/modular-scale'
 
 export default styled.article`
   padding: ${ms(2)} ${ms(1)};
+  font-size: ${ms(1)};
 
   hr {
     border: 1px solid lightgrey;
@@ -17,7 +18,6 @@ export default styled.article`
   }
 
   p {
-    font-size: ${ms(1)};
     line-height: ${ms(1)};
     text-align: justify;
   }
@@ -29,5 +29,10 @@ export default styled.article`
   .emoji {
     height: 18px;
     margin: 0 1px;
+  }
+
+  ul, ol {
+    list-style-type: disc;
+    margin-left: 20px;
   }
 `
