@@ -4,6 +4,8 @@
 
 Nano blog made for the lazy writers, that don't want to commit to a full blog, but perhaps want to write more than just 140 characters. Needs to be hosted on AWS S3 as it updates the posts on the fly.
 
+[Live Example](https://callaa.rs)
+
 # Features
 
 - No back end or continous uploads necessary.
