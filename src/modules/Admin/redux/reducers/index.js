@@ -24,9 +24,6 @@ export default createReducer(initialState, (state, action) => {
 
     case ADMIN_DELETE_POST.SUCCESS:
     case ADMIN_SAVE_POST.SUCCESS:
-      console.log(action)
-      break
-
     case ADMIN_GET_SETTINGS.SUCCESS:
       newState = { ...state, error: null, posts: action.payload }
       break
