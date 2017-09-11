@@ -6,6 +6,6 @@ import sagas from './redux/sagas'
 import reducers from './redux/reducers'
 
 Container.sagas = sagas
-Container.reducers = { admin: reducers }
+Container.reducers = reducers
 
 export default Container

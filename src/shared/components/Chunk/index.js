@@ -3,7 +3,6 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { all } from 'redux-saga/effects'
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 import 'rxjs/add/operator/map'
@@ -11,12 +10,13 @@ import 'rxjs/add/operator/takeUntil'
 import 'rxjs/add/observable/zip'
 import 'rxjs/add/observable/of'
 import 'rxjs/add/observable/fromPromise'
+import { sideEffect, addReducer } from 'adnoto'
+import forEach from 'lodash/forEach'
 
 /**
  * Internal dependencies
  */
 import Loading from '../Loading'
-import { injectReducers } from '../../store/actions'
 
 const moduleDefaultExport = module => module.default || module
 
@@ -59,15 +59,16 @@ export default function asyncRoute (getComponent) {
                 .map(esModule)
                 .map(Component => {
                   if (Component.sagas) {
-                    this.props.sagaMiddleware.run(function * () {
-                      yield all([ Component.sagas() ])
+                    forEach(Component.sagas, saga => {
+                      sideEffect(saga)
                     })
                   }
 
                   if (Component.reducers) {
-                    this.context.store.dispatch(injectReducers(
+                    addReducer.apply(
+                      undefined,
                       Array.isArray(Component.reducers) ? Component.reducers : [Component.reducers]
-                    ))
+                    )
                   }
 
                   Chunk.Component = Component
