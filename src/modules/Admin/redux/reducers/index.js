@@ -8,12 +8,11 @@ import {
   ADMIN_GET_SETTINGS,
   ADMIN_ERROR_READ
 } from '../action_types'
-import { createReducer } from '../../../../shared/reducers'
 
 const storedContent = JSON.parse(window.localStorage.reducerAdmin || null)
 const initialState = storedContent || { posts: null, error: null, auth: null }
 
-export default createReducer(initialState, (state, action) => {
+export default function admin (state = initialState, action = {}) {
   let newState
 
   switch (action.type) {
@@ -24,9 +23,6 @@ export default createReducer(initialState, (state, action) => {
 
     case ADMIN_DELETE_POST.SUCCESS:
     case ADMIN_SAVE_POST.SUCCESS:
-      console.log(action)
-      break
-
     case ADMIN_GET_SETTINGS.SUCCESS:
       newState = { ...state, error: null, posts: action.payload }
       break
@@ -45,4 +41,4 @@ export default createReducer(initialState, (state, action) => {
   window.localStorage.reducerAdmin = JSON.stringify(newState || state)
 
   return newState || state
-})
+}

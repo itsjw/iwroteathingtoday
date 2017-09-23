@@ -20,8 +20,8 @@ const madeBy = config.twitter ? (
 ) : null
 
 const attribution = config.attribution ? (
-  <span> Using <a href='https://iwroteathing.today' target='_blank' rel='noopener noreferrer'> I Wrote A Thing
-    Today! </a>. </span>
+  <span> Using <a href='http://iwroteathing.today' target='_blank' rel='noopener noreferrer'>i wrote a thing
+    today</a>. </span>
 ) : null
 
 const App = ({ children }) => (

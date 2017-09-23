@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { withRouter } from 'react-router-dom'
+import React from 'react'
+import { select, subscribe } from 'adnoto'
+import get from 'lodash/fp/get'
 
 /**
  * Internal dependencies
@@ -11,10 +11,18 @@ import { withRouter } from 'react-router-dom'
 import Component from './component'
 import * as actions from './redux/actions'
 
-const mapStateToProps = ({ posts }, ownProps) => ({ posts })
-const mapDispatchToProps = (dispatch, ownProps) => ({...bindActionCreators(actions, dispatch)})
+class Container extends React.Component {
+  componentWillMount () {
+    subscribe(({ posts }) => {
+      this.setState({ posts })
+    })
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component))
+    this.state = { posts: select(get('posts')) }
+  }
+
+  render () {
+    return (<Component posts={this.state.posts} {...actions} />)
+  }
+}
+
+export default Container

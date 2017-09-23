@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { select } from 'redux-saga/effects'
+import { select } from 'adnoto'
 import Slug from 'slug'
 import moment from 'moment'
 import get from 'lodash/fp/get'
@@ -46,9 +46,9 @@ function createSlug ({ title, posts, index = 0 }) {
   return newSlug
 }
 
-export function * deletePost ({ data: { slug, secretAccessKey } }) {
+export function deletePost ({ data: { slug, secretAccessKey } }) {
   const { promise, reject, resolve } = deferred()
-  const { posts, auth: { accessKeyId, region, bucket } } = yield select(getAdmin)
+  const { posts, auth: { accessKeyId, region, bucket } } = select(getAdmin)
 
   const s3 = getS3Bucket({ accessKeyId, region, bucket, secretAccessKey })
 
@@ -61,12 +61,12 @@ export function * deletePost ({ data: { slug, secretAccessKey } }) {
     resolve(posts)
   })
 
-  return yield promise
+  return promise
 }
 
-export function * savePost ({ data: { secretAccessKey, slug, title, content } }) {
+export function savePost ({ data: { secretAccessKey, slug, title, content } }) {
   const { promise, reject, resolve } = deferred()
-  const { posts, auth: { accessKeyId, region, bucket } } = yield select(getAdmin)
+  const { posts, auth: { accessKeyId, region, bucket } } = select(getAdmin)
 
   if (slug) {
     const index = findIndex(posts, getSlug(slug))
