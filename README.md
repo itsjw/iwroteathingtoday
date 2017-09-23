@@ -1,7 +1,5 @@
 # I Wrote A Thing Today
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/AEMubo6XgXjBRq7V3urxNFC3/bcallaars/iwroteathingtoday'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/AEMubo6XgXjBRq7V3urxNFC3/bcallaars/iwroteathingtoday.svg' /></a>
-
 Nano blog made for the lazy writers, that don't want to commit to a full blog, but perhaps want to write more than just 140 characters. Needs to be hosted on AWS S3 as it updates the posts on the fly.
 
 # Features
@@ -103,3 +101,5 @@ After this is done, the `build` directory contents can be uploaded to your AWS S
 
 ## License
 MIT
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/AEMubo6XgXjBRq7V3urxNFC3/bcallaars/iwroteathingtoday'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/AEMubo6XgXjBRq7V3urxNFC3/bcallaars/iwroteathingtoday.svg' /></a>
